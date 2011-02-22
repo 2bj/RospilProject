@@ -24,6 +24,7 @@ class c_access_Register extends c_class {
                 'search'        => '',
                 'content'       => $this->getCenter(strtolower($this->caller->myRootClassAlias)),
                 'bottom'        => $this->getBottom() // called from parent (no changes to bottom, it's pretty static)
+				
         ));
 
     }
@@ -60,7 +61,9 @@ class c_access_Register extends c_class {
         }
 
         return $this->render($this->getTpl($tpl, 'access', true),
-               array('recaptcha' => recaptcha_get_html(Setup::$RECAPTCHA_PUBLIC))
+               array('recaptcha' => recaptcha_get_html(Setup::$RECAPTCHA_PUBLIC),
+			   		 'categor'	 => $this->getCat()// Получаем список категорий
+			   )
                );
     }
 }

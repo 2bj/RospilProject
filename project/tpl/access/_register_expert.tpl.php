@@ -94,7 +94,7 @@ $admin = (isset($this->user['userid']) && ($this->user['userid']>0) && ($this->u
 
         <div class="inputbox">
             <div class="label">Профессиональная область</div>
-            <div class="field"><input type="text" name="specialty" id="specialty" value=""></div>
+            <div class="field"><?= $categor ?></div>
         </div>
 
         <div class="inputbox">

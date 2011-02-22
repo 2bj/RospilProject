@@ -52,12 +52,21 @@ class c_generic_Main extends c_class {
     }
 
     public function getCommonContent($experts=false) {
-
+		$parts = explode('/',URL::$SUBSPACE);
+		if (isset($parts[1])){
+		$keys = array_keys(SETUP::$CATEGORIES);
+		if (!in_array($parts[1],$keys)){return "Ничего не найдено.";}
+		$cat=SETUP::$CATEGORIES[$parts[1]];
+							 }
+		else {$cat='';}					 
+								
         $currentPage = Pagination::getCurrentPage();
         $totalPages = c_posts_API::getTotalLeadsPages($this->db,$experts,0);
 
         $qa = ($experts?
-                $this->render($this->getTpl('experts_right_column', 'generic', true)):
+                $this->render($this->getTpl('experts_right_column', 'generic', true), array (
+				'cat'=>Setup::$CATEGORIES
+				)):
                 $this->render($this->getTpl('quick_about', 'generic', true))
                 );
 
@@ -68,7 +77,7 @@ class c_generic_Main extends c_class {
                                   'experts' => $experts)),
                     'stream'=>$this->render($this->getTpl(($experts?'experts_':'').'stream', 'generic', true),
                             array(
-                                'list' => c_posts_API::getLeadsList($this->db,$experts,0,$currentPage),
+                                'list' => c_posts_API::getLeadsList($this->db,$experts,0,$currentPage,'',$cat),
                                 'context' => 'main',
                                 'pagination' => Pagination::get($this->caller,$totalPages)
                                 )

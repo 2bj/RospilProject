@@ -130,10 +130,10 @@ class Setup {
     public static $SHARE_JS ='<script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script><script type="text/javascript">stLight.options({publisher:\'897c3993-783f-4ad1-8560-4bff3f15f9b3\'});</script>';
 
     public static $FACEBOOK_SHARE ='<a name="fb_share"></a><script src="http://static.ak.fbcdn.net/connect.php/js/FB.Share" type="text/javascript"></script>';
-
-    public static $RECAPTCHA_PUBLIC = '';
-    public static $RECAPTCHA_PRIVATE = '';
-
+//=============================================================================================================
+    public static $RECAPTCHA_PUBLIC = '6LcLtMESAAAAAJQKsVqmjiZcgiVz07BqbO4gw9yj';// менялось здесь
+    public static $RECAPTCHA_PRIVATE = '6LcLtMESAAAAANcja21_zPZy4X31ULdTRiJ2YUpN';
+//****************************************************************************************************************
     public static $VKONTAKTE_SHARE_JS = '<script type="text/javascript" src="http://vkontakte.ru/js/api/share.js?10" charset="windows-1251"></script>';
     public static $VKONTAKTE_SHARE_BUTTON = '<script type="text/javascript">document.write(VK.Share.button(false,{type: "button", text: "Сохранить"}));</script>';
 

@@ -34,6 +34,7 @@ class c_ajax_Root extends API {
     }
 
     function processAuthIndependent() {
+	
         switch ($this->function) {
             case 'regexpert':
                 require_once $_SERVER['DOCUMENT_ROOT'].Settings::$PROJECT_MODULES_PATH."/access/c_access_API.php";
@@ -41,7 +42,8 @@ class c_ajax_Root extends API {
                     // update user with expert info
                     $out = c_access_API::expertApplication($this->db,$this->user['userid'],URL::$POST);
                 } else {
-                    $valid = $this->checkRecaptcha();
+                   $valid = $this->checkRecaptcha();
+					//$valid=true;
                     if ($valid) {
                         // register new user with expert info
                         $out = c_access_API::registerUser($this->db,URL::$POST);
@@ -356,6 +358,7 @@ class c_ajax_Root extends API {
                     $out = array('status' => 'error','message'=>'Вы слишком часто постите. Мы встревожены. Подождите немного. ');
                 } else {
                     $valid = $this->checkRecaptcha();
+					
                     if ($valid) {        
                         $out = c_posts_API::postCorruptionLead($this->db,URL::$POST);
                     } else {

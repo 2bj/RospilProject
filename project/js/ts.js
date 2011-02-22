@@ -413,7 +413,7 @@ var Register = {
         });
     },
     validateForm: function() {
-        var valid = true;
+        var valid = true; 
         if (
             (jQuery.trim($('.register #name').val()).length == 0) ||
             (jQuery.trim($('.register #password').val()).length == 0) ||
@@ -434,9 +434,11 @@ var Register = {
     handleRegistration: function() {
         var valid = Register.validateForm();
         Register.disableButton();
+		
         if (valid) {
+			
             Register.submitForm();
-        } else {
+        } else { 
 
         }
         Register.enableButton();
@@ -717,8 +719,10 @@ var ProcessForm = {
         });
     },
     submitForm: function(id,btn) {
+		
         $('#'+btn).hide();
         $('<p id="tmpmsg">Обновляем информацию...</p>').insertAfter('#'+btn);
+		
         var formstr = $('#'+id).serialize();
         $.ajax({
             type: "POST",
@@ -728,7 +732,10 @@ var ProcessForm = {
                 $('#tmpmsg').remove();
                 $('#'+btn).show();
                 var res = eval('('+r+')');
+				
+				
                 if (res.status == 'OK') { // either local forward or display message. @TODO: add function calls (show/hide/update areas)
+				
                     $(':input','#'+id)
                          .not(':button, :submit, :reset, :hidden')
                          .val('')
@@ -761,6 +768,7 @@ var ProcessForm = {
     },
     validateForm: function(id,btn) {
         var valid = true;
+		
         $.each($('#'+id+' :input:not(input[type=hidden])'),function(i,field) {
             $('#errorbox').hide();
             if (($(field).attr('id') != btn)) {
@@ -771,6 +779,7 @@ var ProcessForm = {
             }
             if (jQuery.trim($(field).attr('value')).lenght == 0) {
                 valid = false;
+				
             }
         });
 
@@ -794,6 +803,7 @@ var ProcessForm = {
     handleForm: function(formid,submitid) {
         var valid = ProcessForm.validateForm(formid,submitid);
         ProcessForm.disableButton(submitid);
+		
         if (valid) {
             ProcessForm.submitForm(formid,submitid);
         } else {

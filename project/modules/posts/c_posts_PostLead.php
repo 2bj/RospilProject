@@ -28,7 +28,9 @@ class c_posts_PostLead extends c_class {
 
     public function getCenter() {
         return $this->render($this->getTpl('report_corruption', 'posts', true),
-               array('recaptcha' => recaptcha_get_html(Setup::$RECAPTCHA_PUBLIC))
+               array('recaptcha' => recaptcha_get_html(Setup::$RECAPTCHA_PUBLIC),
+			    'categor'	 => $this->getCat()// Получаем список категорий
+			   )
                );
     }
     

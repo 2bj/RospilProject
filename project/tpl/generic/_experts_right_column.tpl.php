@@ -1,3 +1,11 @@
+<table class="bordermenu">
+<tr><td class="left"></td  ><td class="centr">Категории распилов</td><td class="right"></td></tr>
+<? foreach ($cat as $m => $name)  { ?>
+<tr class="itemlist"><td colspan="3"> <a href="/expertise/<?=$m?>"><?=$name?></a></td></td>
+
+<? } ?>
+</table>
+
 <div class="localheader">Разработка</div>
 <div>
     <p>

@@ -105,9 +105,11 @@ function _recaptcha_http_post($host, $path, $data, $port = 80) {
  */
 function recaptcha_get_html ($pubkey, $error = null, $use_ssl = false)
 {
+
 	if ($pubkey == null || $pubkey == '') {
 		die ("To use reCAPTCHA you must get an API key from <a href='https://www.google.com/recaptcha/admin/create'>https://www.google.com/recaptcha/admin/create</a>");
 	}
+	
 	
 	if ($use_ssl) {
                 $server = RECAPTCHA_API_SECURE_SERVER;

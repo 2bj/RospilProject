@@ -251,25 +251,31 @@ class c_posts_API extends API {
 
     }
 
-    public static function getLeadsList($db,$review=false,$orgid=0,$currentPage=1,$ids='') {
+    public static function getLeadsList($db,$review=false,$orgid=0,$currentPage=1,$ids='',$cat='') {
+		
+			
 
         $orgid = $db->escapeString($orgid);
         $currentPageid = $db->escapeString($currentPage);
         $selectIds = $db->escapeString(preg_replace('/[^\d,]+/','',$ids));
+		$cat =  $db->escapeString($cat);
+		
 
         $itemsPerPage = Setup::$POSTS_PER_PAGE;
         $offset = (($currentPage > 1)?(($currentPage-1)*$itemsPerPage):0);
         $paging = "LIMIT ".($offset?$offset.', ':'').$itemsPerPage;
 
         $orgid = $db->escapeString($orgid);
+		
+		$categor = ($cat?" AND (specialty='$cat') ":"");
         $orgfilter = ($orgid?" AND (orgid=$orgid) ":"");
         $forreview = ($review?"(published_ts IS NULL) AND ":"(published_ts IS NOT NULL) AND");
         $orderby = ($review?"commented_ts DESC":"published_ts DESC");
         $sqlIds = ($selectIds?" AND leadid IN ($selectIds)":'');
         $sql = "SELECT * FROM leads
-                WHERE  $forreview (deleted_ts IS NULL) $orgfilter $sqlIds
-                ORDER BY $orderby $paging";
-        
+                WHERE  $forreview (deleted_ts IS NULL) $orgfilter $sqlIds $categor
+                ORDER BY $orderby $paging ";
+      
         $res = API::getSqlArray($db, $sql);
         return $res;
     }

@@ -17,6 +17,10 @@
             <div class="label">Ссылка на страницу госзаказа</div>
             <div class="field"><input type="text" name="link" id="link" value=""></div>
         </div>
+         <div class="inputbox">
+            <div class="label">Категория распила </div>
+            <div class="field"><?=$categor ?></div>
+        </div>
 
         <div class="inputbox">
             <div class="label">Описание заказа-распила (вставьте текст со страницы источника)</div>

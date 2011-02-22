@@ -5,7 +5,13 @@ class c_class {
     public $listCSS;
     public $listJS;
     public $tplroot;
+	
+	
+	public function getCat() {
+        return $this->render($this->getTpl('cat', 'generic', true),array('cat'=>Setup::$CATEGORIES));
+    }
 
+   //========================================================================
     public function getSearch() {
         return $this->render($this->getTpl('search', 'generic', true),array('caller'=>$this->caller));
     }
