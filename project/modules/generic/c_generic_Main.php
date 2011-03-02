@@ -56,7 +56,7 @@ class c_generic_Main extends c_class {
 		if (isset($parts[1])){
 		$keys = array_keys(SETUP::$CATEGORIES);
 		if (!in_array($parts[1],$keys)){return "Ничего не найдено.";}
-		$cat=SETUP::$CATEGORIES[$parts[1]];
+		$cat=$parts[1];
 							 }
 		else {$cat='';}					 
 								
